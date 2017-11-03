@@ -27,3 +27,4 @@ echo   \yii\bootstrap\Html::a("添加商品",['brand/add'],['class'=>'btn btn-in
 </tr>
 <?php endforeach;?>
 </table>
+<?=\yii\widgets\LinkPager::widget(['pagination' => $page]);?>

@@ -3,14 +3,34 @@
 namespace backend\controllers;
 
 use backend\models\Brand;
+use yii\data\Pagination;
 use yii\web\UploadedFile;
 
 class BrandController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $brands=Brand::find()->all();
-        return $this->render('index',['brands'=>$brands]);
+//        $brands=Brand::find()->all();
+//        return $this->render('index',['brands'=>$brands]);
+//1.总条数
+        $count = Brand::find()->count();
+
+        //2.每页显示条数
+        $pageSize = 3;
+
+        //创建分页对象
+        $page = new Pagination(
+            [
+                'pageSize' => $pageSize,
+                'totalCount' => $count
+            ]
+        );
+        // select * from goods limit 0,3  => limit 3 offset 0
+        $brands = Brand::find()->limit($page->limit)->offset($page->offset)->all();
+        //显示视图
+        return $this->render("index", ['brands' =>$brands,'page'=>$page]);
+
+
     }
     //添加
     public  function  actionAdd(){
