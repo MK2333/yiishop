@@ -1,26 +1,18 @@
 <?php
-
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-
-/* @var $this yii\web\View */
-/* @var $model \backend\models\Brand */
-/* @var $form ActiveForm */
+use yii\bootstrap\ActiveForm;
+use yii\web\JsExpression;
+use xj\uploadify\Uploadify;
 ?>
-<div class="brand-add">
 
-    <?php $form = ActiveForm::begin(); ?>
-        <?= $form->field($model, 'name') ?>
-        <?= $form->field($model, 'intro') ?>
-        <?= $form->field($model, 'sort') ?>
-        <?= $form->field($model, 'status')->radioList(\backend\models\Brand::$statusText) ?>
-        <?= $form->field($model, 'imgFile')->fileInput() ?>
+<?php $form = ActiveForm::begin(); ?>
 
-
-    
-        <div class="form-group">
-            <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
-        </div>
-    <?php ActiveForm::end(); ?>
-
-</div><!-- brand-add -->
+<?= $form->field($model,'name')->textInput()->label("名称") ?>
+<?= $form->field($model,'sort')->textInput()->label("排序") ?>
+<?= $form->field($model, 'status')->inline()->radioList(backend\models\Brand::$statusText) ?>
+<?= $form->field($model,'logo')->widget('manks\FileInput', []);?>
+<?= $form->field($model, 'intro')->textarea()->label("简介") ?>
+    <div class="form-group">
+        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+    </div>
+<?php ActiveForm::end(); ?>
