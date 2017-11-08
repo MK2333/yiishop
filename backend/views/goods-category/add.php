@@ -13,7 +13,7 @@ echo \liyuze\ztree\ZTree::widget([
             callback: {
 		        onClick: function(event, treeId, treeNode){
 		        console.dir(treeNode);
-		        $("#goods-parent_id").val(treeNode.id);
+		        $("#goodscategory-parent_id").val(treeNode.id);
 		        }
 	     },
 			data: {

@@ -17,7 +17,7 @@ echo   \yii\bootstrap\Html::a("添加商品",['brand/add'],['class'=>'btn btn-in
     <td><?=$brand->name?></td>
     <td><?=$brand->sort?></td>
     <td><?=$brand->status?></td>
-    <td><?=\yii\bootstrap\Html::img("@web/".$brand->logo,['height'=>50])?></td>
+    <td><?=\yii\bootstrap\Html::img($brand->logo,['height'=>50])?></td>
     <td>
         <?php
         echo   \yii\bootstrap\Html::a("修改",['brand/edit','id'=>$brand->id],['class'=>'btn btn-success']);
